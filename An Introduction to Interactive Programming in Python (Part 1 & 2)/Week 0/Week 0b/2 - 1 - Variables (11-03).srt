@@ -1,0 +1,705 @@
+1
+00:00:00,000 --> 00:00:01,965
+Bienvenido a la clase
+
+2
+00:00:02,201 --> 00:00:06,289
+En la lectura previa hablamos de expresiones aritméticas
+
+3
+00:00:06,289 --> 00:00:12,579
+Sabemos que podemos usar las reglas de precedencia para calcular un
+
+4
+00:00:12,579 --> 00:00:18,397
+valor para esa expresión aritmética. 
+En esta lectura les mostraremos
+
+5
+00:00:18,397 --> 00:00:24,372
+que podemos guardar ese valor en una variable. 
+Vamos a asignar un nombre a esa
+
+6
+00:00:24,372 --> 00:00:30,820
+variable y después podremos usar esa variable en subsecuentes expresiones aritméticas.
+
+7
+00:00:30,820 --> 00:00:33,991
+¿Por qué querríamos hacer eso? 
+Bueno, hay un par de razones
+
+8
+00:00:33,991 --> 00:00:38,598
+Primero, si la expresión fuera grande 
+e involucrara cálculos complicados, 
+
+9
+00:00:38,598 --> 00:00:43,324
+tal vez no querríamos hacerlos de nuevo. 
+Así que guardando ese valor bajo un nombre, evitamos
+
+10
+00:00:43,324 --> 00:00:45,957
+calcular la misma expresión una y otra 
+vez.
+
+11
+00:00:45,957 --> 00:00:51,226
+Segundo, dándole nombre a este valor 
+podemos ayudar a la persona que está leyendo
+
+12
+00:00:51,226 --> 00:00:55,945
+tu código a entender qué 
+cálculo está haciendo tu programa.
+
+13
+00:00:55,945 --> 00:01:01,218
+Entonces, te voy a mostrar algunos
+ejemplos sobre como usar variables en tu
+
+14
+00:01:01,218 --> 00:01:06,076
+programa, básicamente, para hacerlo 
+más eficiente o más
+
+15
+00:01:06,076 --> 00:01:09,060
+comprensible. 
+Bien, hagamos unos ejemplos.
+
+16
+00:01:11,360 --> 00:01:16,515
+Hablemos de las variables. 
+Una variable se usa para almacenar
+
+17
+00:01:16,515 --> 00:01:19,145
+un valor, 
+permite recuperarlo y almacenarlo para evitar
+
+18
+00:01:19,145 --> 00:01:24,583
+re-calcular, y el nombre que le damos a ese valor
+nos ayuda a entender lo que representa.
+
+19
+00:01:24,790 --> 00:01:29,836
+En Python los nombres válidos para las variables consisten en combinaciones de letras, números y 
+
+20
+00:01:29,836 --> 00:01:32,728
+guión bajo. Este caracter que ven aquí..
+
+21
+00:01:32,912 --> 00:01:36,543
+Su nombre tiene que empezar ya sea con una letra ó 
+con un guión bajo.
+
+22
+00:01:36,543 --> 00:01:40,604
+Después hablaremos sobre cuándo
+ debemos usar guión bajo.
+
+23
+00:01:40,789 --> 00:01:45,774
+Los nombres de variables son sensibles a mayúsculas y minúsculas. Por ahora deberías empezar con
+
+24
+00:01:45,774 --> 00:01:50,758
+minúsculas, después te diremos cuando, 
+convencionalmente, se usan mayúsculas.
+
+25
+00:01:50,758 --> 00:01:53,589
+Aquí hay un ejemplo de un ninja,
+un
+
+26
+00:01:53,589 --> 00:01:55,620
+nombre bonito para una variable.
+Ninja con mayúscula.
+
+27
+00:01:55,620 --> 00:02:00,737
+Muy bonito nombre para una variabe también, pero
+no lo usaremos hasta más adelante en esta clase.
+
+28
+00:02:00,737 --> 00:02:04,104
+Ninja guión bajo, guión bajo,
+guión bajo.
+
+29
+00:02:04,104 --> 00:02:07,337
+Un gran nombre para un gamer, pero no tan bueno
+para un nombre en Python
+
+30
+00:02:07,539 --> 00:02:09,290
+Nombres ilegales:
+un número.
+
+31
+00:02:09,290 --> 00:02:11,944
+1337.
+Este número tiene en realidad un significado: es
+
+32
+00:02:11,944 --> 00:02:15,635
+escritura leet.
+1 es L, 3 es E, E, 7 es
+
+33
+00:02:15,635 --> 00:02:18,678
+T, leet.
+No puedes ser un ninja leet, desafortunadamente,
+
+34
+00:02:18,678 --> 00:02:23,275
+al menos no usando números.
+Si quieres un nombre con múltiples palabras,
+
+35
+00:02:23,275 --> 00:02:27,159
+para tu variable, está bien.
+Sólo conecta todas las palabras usando un
+
+36
+00:02:27,159 --> 00:02:31,886
+guión bajo, esa es una convención en Python.
+Por ejemplo, un nombre legal sería
+
+37
+00:02:31,886 --> 00:02:34,735
+elite_ninja.
+Si quieres ser más elite puedes ser
+
+38
+00:02:34,735 --> 00:02:38,641
+leet_ninja
+o si quieres cuantificar tu "ninjicidad"
+
+39
+00:02:38,641 --> 00:02:42,494
+puedes decir: ninja<u>elite.elite.
+Desafortunadamente, no puedes comenzar un nombre con</u>
+
+40
+00:02:42,494 --> 00:02:47,407
+el número, esto no va a funcionar.
+¿Cómo tomas ese valor y
+
+41
+00:02:47,581 --> 00:02:50,137
+lo asignas a una variable?
+Bueno, usas el signo igual.
+
+42
+00:02:50,137 --> 00:02:53,795
+Esto es lo mismo que hiciste, digamos
+en tu clase álgebra en el colegio.
+
+43
+00:02:53,795 --> 00:02:57,977
+Dices, variable igual a valor.
+Date cuenta que si quieres probar
+
+44
+00:02:57,977 --> 00:03:00,591
+si dos valores son iguales, usas un doble
+igual.
+
+45
+00:03:00,591 --> 00:03:04,250
+Entonces, simple signo de igual para asginación,
+doble signo de igual es para probar igualdad.
+
+46
+00:03:04,250 --> 00:03:09,045
+Ahora, probablemente lo más importante que
+tienes que hacer cuando quieras
+
+47
+00:03:09,045 --> 00:03:13,663
+escoger los nombres de las variables,
+es pensar acerca de algo que sea
+
+48
+00:03:13,663 --> 00:03:17,749
+fácil de recordar que te ayude a entender
+lo que la variable representa.
+
+49
+00:03:17,749 --> 00:03:21,420
+Por ejemplo, si yo reviso el código y
+digo, aquí, digo, M.
+
+50
+00:03:21,420 --> 00:03:28,272
+variable M, ¿Qué representa?
+No estoy seguro pero si yo digo mi nombre y guión bajo
+
+51
+00:03:28,272 --> 00:03:32,293
+Te apuesto a que puedes adivinar lo que
+será.
+
+52
+00:03:32,293 --> 00:03:38,973
+Será Joe Warren.
+Así es que puedo pedir que se guarde.
+
+53
+00:03:38,973 --> 00:03:45,016
+Guardar mi nombre.
+Seguro que es Joe Warren.
+
+54
+00:03:45,371 --> 00:03:52,600
+Tengo otra variable, mi edad, por ejemplo.
+Mi edad, el número es 51.
+
+55
+00:03:58,340 --> 00:04:02,203
+Bien.
+Entonces, hemos asignado algunos valores a algunas
+
+56
+00:04:02,203 --> 00:04:07,415
+variables, ¿Qué podemos hacer con ellas?
+Bien, los cumpleaños son divertidos.
+
+57
+00:04:07,415 --> 00:04:11,459
+Eh, apenas tuve un cumpleaños en
+Febrero.
+
+58
+00:04:11,459 --> 00:04:16,671
+Entonces, el siguiente Febrero, Tendré otro.
+¿Qué podría hacer con eso?
+
+59
+00:04:16,671 --> 00:04:21,793
+Podría ir y actualizar mi edad.
+¿Cómo haría eso?
+
+60
+00:04:21,793 --> 00:04:29,430
+Bueno, podría decir algo como mi edad es
+igual a 51 más uno, entonces podría imprimir
+
+61
+00:04:29,430 --> 00:04:31,212
+mi edad.
+Si ejecuto eso.
+
+62
+00:04:31,212 --> 00:04:36,092
+Será 52, sorpresa, sorpresa.
+Pero date cuenta de esta insensata
+
+63
+00:04:36,092 --> 00:04:39,752
+expresión aquí.
+Porque yo ya tengo, bueno, mi edad
+
+64
+00:04:39,752 --> 00:04:45,106
+actual aquí mismo en esta variable mi_edad.
+De hecho, lo que realmente debí haber
+
+65
+00:04:45,106 --> 00:04:48,360
+dicho es algo como, mi edad es = a mi
+edad + uno.
+
+66
+00:04:48,840 --> 00:04:51,572
+Y date cuenta, que ahora funciona sin importar
+cuál sea mi edad actual.
+
+67
+00:04:51,572 --> 00:04:54,451
+Esto siempre me dará uno más
+que mi edad actual.
+
+68
+00:04:54,597 --> 00:04:57,915
+Cálculos como este, donde tomo una
+variable, hago algo a ella,
+
+69
+00:04:57,915 --> 00:05:00,794
+y actualizo esa segunda variable, son
+realmente muy frecuentes.
+
+70
+00:05:00,794 --> 00:05:04,454
+Pero hay un atajo que puedes utilizar
+en Python, y de nuevo, en muchos de los otros
+
+71
+00:05:04,454 --> 00:05:06,845
+lenguajes.
+Donde puedes utilizar un operador llamado
+
+72
+00:05:06,845 --> 00:05:09,480
+más =.
+El operador más igual toma lo que esté a
+
+73
+00:05:09,480 --> 00:05:13,188
+la izquierda, obtiene su valor.
+Toma este operador y lo aplica a lo que
+
+74
+00:05:13,188 --> 00:05:15,921
+esté en la parte derecha.
+Y entonces pone el valor de regreso en el
+
+75
+00:05:15,921 --> 00:05:18,410
+lado izquierdo.
+Entonces esto hace exáctamente lo mismo que acabamos de hacer.
+
+76
+00:05:18,410 --> 00:05:21,309
+Y regresa con que mi edad es
+igual a 52.
+
+77
+00:05:21,483 --> 00:05:25,311
+Mmm, ¿qué otro?
+Hagamos un ejemplo más, rápidamente.
+
+78
+00:05:25,311 --> 00:05:29,950
+Te contaré una historia acerca de
+otra variable y esto podría no ser,
+
+79
+00:05:29,950 --> 00:05:34,648
+o parecer precisamente comprensible como para comenzar con ello, pero voy a
+
+80
+00:05:34,648 --> 00:05:39,920
+crear una variable llamada píldora mágica. 
+Y voy a imprimir
+
+81
+00:05:41,660 --> 00:05:50,480
+Mi edad menos la píldora mágica.
+Entonces, si hago eso,
+
+82
+00:05:50,880 --> 00:05:56,254
+termino con, bueno, 22.
+Muy bien, entonces sigamos y comentemos
+
+83
+00:05:56,254 --> 00:06:00,588
+esto, obtenemos la edad correcta.
+Obtenemos 21.
+
+84
+00:06:00,588 --> 00:06:03,865
+Así que, ¿qué es la píldora mágica? Explicaré brevemente la
+
+85
+00:06:03,865 --> 00:06:07,142
+historia de la píldora magica.
+Así que, tengo tres hijos, de diecisiete,
+
+86
+00:06:07,142 --> 00:06:10,364
+quince y doce años.
+Y, el de quince años, quizás en un
+
+87
+00:06:10,364 --> 00:06:15,029
+punto, va a inventar una píldora que te quita 30 años de
+
+88
+00:06:15,029 --> 00:06:17,029
+edad.
+Así que va a regalarla.
+
+89
+00:06:17,029 --> 00:06:21,139
+Y mi hijo mayor dice, guau, sabes, eso, eso no es sensato, deberías vender
+
+90
+00:06:21,139 --> 00:06:23,805
+esa píldora, sabes, y ganaríamos un montón de dinero.
+
+91
+00:06:23,805 --> 00:06:28,304
+Así que tuvimos una larga conversación sobre cuál sería el valor de una píldora que redujera 30
+
+92
+00:06:28,304 --> 00:06:31,470
+años tu edad. Finalmente nos decidimos por 300.000 dólares.
+
+93
+00:06:31,470 --> 00:06:37,053
+Mi hijo de 15 años tenía alguna duda sobre si realmente estaba
+
+94
+00:06:37,053 --> 00:06:40,334
+valorada en 300,000 dólares así que llamó a su abuelo.
+
+95
+00:06:40,334 --> 00:06:47,933
+Su abuelo tenía 74 años.
+
+96
+00:06:47,933 --> 00:06:54,942
+Entonces preguntó a su abuelo, ¿tú, tú 
+pagarías 300.000 dólares por una píldora que reduce tu edad
+
+97
+00:06:54,942 --> 00:06:59,164
+ en 30 años?
+El abuelo tenía una respuesta interesante
+
+98
+00:06:59,164 --> 00:07:05,497
+pensó un poco, y dijo, 
+me tomaré dos de esas píldoras.
+
+99
+00:07:05,497 --> 00:07:11,240
+Entonces, vamos a imprimir lo que pasaría si
+el abuelo tomara dos de esas píldoras.
+
+100
+00:07:12,500 --> 00:07:16,880
+B14, o "tener 14", creo que es una buena elección.
+Recuerden dar a sus variables un nombre fácil de recordar
+
+101
+00:07:16,880 --> 00:07:21,832
+que puedan recordar.
+Les ayudará cuando vuelvan atrás
+
+102
+00:07:21,832 --> 00:07:27,038
+a leer su programa, y también ayudará a otra gente
+que vaya a leer su programa.
+
+103
+00:07:27,038 --> 00:07:28,371
+Así entenderán de qué se trata. Muy bien.
+
+104
+00:07:28,371 --> 00:07:33,923
+Dadme un segundo. Así que vamos a acabar con un ejemplo más serio
+
+105
+00:07:33,923 --> 00:07:39,083
+que hace algo útil. Aquí tengo, en mis comentarios, que querríamos
+
+106
+00:07:39,083 --> 00:07:44,415
+convertir grados Fahrenheit en Celsius.
+De modo que he escrito una fórmula
+
+107
+00:07:44,415 --> 00:07:50,087
+aquí, que digamos que describe la conversión
+desde una temperatura F en Fahrenheit a una
+
+108
+00:07:50,087 --> 00:07:54,393
+temperatura C en Celsius.
+Entonces hagámoslo en código Python.
+
+109
+00:07:54,393 --> 00:07:57,537
+Entonces, lo que voy a hacer es que voy a definir
+
+110
+00:07:57,537 --> 00:08:02,322
+un valor para los grados Fahrenheit. Así que voy a ser un poco más reflexivo
+
+111
+00:08:02,322 --> 00:08:07,380
+en este caso, y de hecho le voy a dar un nombre más largo. Lo voy a llamar Temp Fahrenheit.
+
+112
+00:08:07,840 --> 00:08:11,392
+Y voy a inicializarlo, digamos, tomemos 32 grados Celsius.
+
+113
+00:08:11,392 --> 00:08:15,558
+Yo creo que conozco el valor de 32 grados Fahrenheit en Celsius.
+
+114
+00:08:15,558 --> 00:08:20,340
+Así que, ¿qué es lo que necesito hacer? Yo quiero utilizar mi expresión que
+
+115
+00:08:20,340 --> 00:08:23,892
+convierte 10 Fahrenheit en la temperatura en Celsius.
+
+116
+00:08:23,892 --> 00:08:32,720
+Así que puedo decir 10 Celsius es igual a, vamos a ver, 5 noches.
+
+117
+00:08:33,180 --> 00:08:37,909
+Multiplicando por, bueno, lo que vamos a utilizar será la temperatura en Fahrenheit.
+
+118
+00:08:37,909 --> 00:08:45,387
+Así que tomamos tempFahrenheit.
+-32, y vamos a imprimir
+
+119
+00:08:45,387 --> 00:08:50,000
+la temperatura resultante.
+Así que imprimimos temp.
+
+120
+00:08:53,340 --> 00:08:57,379
+Ahora, una cosa que frecuentemente es bueno hacer es,
+cuando escribes un fragmento de código y
+
+121
+00:08:57,379 --> 00:09:00,409
+lo estás probando, en lugar de simplemente introducir valores y después
+
+122
+00:09:00,409 --> 00:09:03,439
+ejecutar el código, esperando que todo funcione correctamente.
+
+123
+00:09:03,439 --> 00:09:07,213
+Frecuentemente es bueno pensar, okey,
+¿cuál debería ser la respuesta?, antes de ejecutar
+
+124
+00:09:07,213 --> 00:09:09,871
+el código.
+Yo dije que sabía el valor de 32 grados
+
+125
+00:09:09,871 --> 00:09:13,007
+Fahrenreit y Celsius.
+Y sí, eso son 0 grados Celsius.
+
+126
+00:09:13,007 --> 00:09:16,090
+eso es mucho frío.
+Así que vamos a ver qué sucede si lo ejecuto.
+
+127
+00:09:16,090 --> 00:09:16,839
+Pues, bien.
+
+128
+00:09:16,839 --> 00:09:20,301
+Resulta que 32 grados Fahrenheit son 0 grados Celsius.
+
+129
+00:09:20,301 --> 00:09:26,194
+Ahora, nosotros también sabemos que, veamos, 212
+grados Fahrenheit deberían ser 100 grados
+
+130
+00:09:26,194 --> 00:09:29,730
+Celsius.
+De modo que el valor de escribir esta expresión
+
+131
+00:09:29,730 --> 00:09:34,813
+aquí es que ahora, podemos simplemente utilizarla, y cambiar el valor de
+
+132
+00:09:34,813 --> 00:09:39,294
+tempFahrenheit a 212.
+Y ejecutarlo otra vez, y si lo estamos haciendo bien,
+
+133
+00:09:39,294 --> 00:09:43,451
+resulta que son 100 grados Celsius.
+Ahora, vamos a hacerlo de la otra manera.
+
+134
+00:09:43,451 --> 00:09:50,093
+Vamos a escribir una expresión
+que convierta de Celsius a Fahrenheit,
+
+135
+00:09:50,093 --> 00:09:53,738
+de manera que vosotros practiquéis
+un poco más.
+
+136
+00:09:53,738 --> 00:10:00,137
+Así que yo podría decir Tip Celsius es igual
+a 0, y entonces puedo escribir mi expresión
+
+137
+00:10:00,137 --> 00:10:06,374
+que convierte de Celsius a Fahrenheit.
+Así que, tempFahrenheit es igual a, bueno,
+
+138
+00:10:06,374 --> 00:10:11,720
+digamos que mi fórmula dice 
+que es igual a Tip Celsius multiplicado por 9/5.
+
+139
+00:10:12,720 --> 00:10:15,820
+Además, 32.
+Vamos a imprimirlo.
+
+140
+00:10:15,820 --> 00:10:26,090
+Imprimir, Temp Fahrenheit. Así que de nuevo, si la
+temperatura es de 0 grados Celsius,
+
+141
+00:10:26,090 --> 00:10:30,413
+esperaríamos 32 grados Fahrenheit.
+Así que podemos estar seguros de que ha funcionado.
+
+142
+00:10:30,413 --> 00:10:35,258
+Vamos a hacer sólo un test más, rápidamente,
+siempre es bueno hacer al menos un par
+
+143
+00:10:35,258 --> 00:10:39,316
+de tests cuando estamos construyendo cosas.
+Así que si su temperatura es de 100 grados
+
+144
+00:10:39,316 --> 00:10:44,281
+Celsius, eso está hirviendo, y deberían ser
+212 grados Fahrenheit, así que seguro
+
+145
+00:10:44,281 --> 00:10:47,309
+que ha funcionado.
+Estos son algunos ejemplos de cómo utilizar
+
+146
+00:10:47,309 --> 00:10:52,336
+variables para organizar sus computaciones.
+Ahora, en nuestra próxima lección, hablaremos sobre más
+
+147
+00:10:52,336 --> 00:10:57,120
+programación en Python, Scott va a
+hablar sobre funciones y de hecho él
+
+148
+00:10:57,120 --> 00:11:01,420
+regresa y retoma este ejemplo.
+Yo les veré de nuevo después de algunas lecturas más.
