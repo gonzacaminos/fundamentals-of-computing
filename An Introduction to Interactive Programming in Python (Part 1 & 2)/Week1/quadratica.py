@@ -9,8 +9,7 @@ Enter the maximum of these four numbers.
 
 def quadratica(x):
     
-    formula= -5*(x**5) + 69*(x**2) - 47
-    
+    formula= -5*(x**5) + 69*(x**2) - 47    
     return formula
 
 
