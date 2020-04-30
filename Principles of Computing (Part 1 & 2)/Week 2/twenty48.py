@@ -66,14 +66,13 @@ class TwentyFortyEight:
     """
 
     def __init__(self, grid_height, grid_width):
-        # replace with your code
-        self.grid_height = grid_height
-        self.grid_width  = grid_width
-        self.grid = []
-        self.DIRECTION = {UP:   self.traverse_grid((0, 0), (0, 1), self.grid_width),
-                          LEFT: self.traverse_grid((0,0), (1,0), self.grid_height),
-                          DOWN: self.traverse_grid((self.grid_height-1,0), (0,1), self.grid_width),
-                          RIGHT:self.traverse_grid((0,self.grid_width-1), (1,0), self.grid_height)}
+        self._grid_height = grid_height
+        self._grid_width  = grid_width
+        self._grid = []
+        self._direction = {UP:   self.traverse_grid((0, 0), (0, 1), self._grid_width),
+                          LEFT: self.traverse_grid((0,0), (1,0), self._grid_height),
+                          DOWN: self.traverse_grid((self._grid_height-1,0), (0,1), self._grid_width),
+                          RIGHT:self.traverse_grid((0,self._grid_width-1), (1,0), self._grid_height)}
 
         self.reset()
 
@@ -82,19 +81,18 @@ class TwentyFortyEight:
         Reset the game so the grid is empty except for two
         initial tiles.
         """
-        self.grid = [[0 + 0 for _dummy_col in range(self.grid_width)]
-                            for _dummy_row in range(self.grid_height)]
+        self._grid = [[0 + 0 for _dummy_col in range(self._grid_width)]
+                            for _dummy_row in range(self._grid_height)]
         self.new_tile()
         self.new_tile()
 
-        return self.grid
     
     def __str__(self):
         """
         Return a string representation of the grid for debugging.
         """
         # replace with your code
-        return str(self.grid)
+        return str(self._grid)
 
     
 
@@ -103,14 +101,14 @@ class TwentyFortyEight:
         Get the height of the board.
         """
         # replace with your code
-        return self.grid_height
+        return self._grid_height
 
     def get_grid_width(self):
         """
         Get the width of the board.
         """
         # replace with your code
-        return self.grid_width
+        return self._grid_width
     def traverse_grid(self, start_cell, direction, num_steps):
         """
         Function that iterates through the cells in a grid
@@ -147,16 +145,21 @@ class TwentyFortyEight:
             _values.append(_value)
         return _values
 
-    def set_grid_values(self, start_cell, direction, num_steps, list): 
+    def set_grid_values(self, start_cell, direction, num_steps, line): 
         """
         Function that iterates on the grid on a linear direction
         Sets the value of each tile and returns a list
         Uses the same parameters that the traverse_grid method
+        returns the list of changed tiles
         """
         _grid = self.traverse_grid(start_cell,direction, num_steps)
+        _changed_tiles = []
         for _index, _value in enumerate(_grid):
-            #print list[_index], _value[0], _value[1]
-            self.set_tile(_value[0],_value[1], list[_index])
+            _prev_val = self.get_tile(_value[0],_value[1]) # We keep this value to know if tile has changed
+            self.set_tile(_value[0],_value[1], line[_index])
+            if(_prev_val != self.get_tile(_value[0],_value[1])): # If tile has changed
+                _changed_tiles.append(_value)
+        return _changed_tiles
 
     def move(self, direction):
         """
@@ -164,31 +167,46 @@ class TwentyFortyEight:
         a new tile if any tiles moved.
         """
         print "MOVING >>>"
-        _this_direction = self.DIRECTION[direction]
+        _this_direction = self._direction[direction]
         _offset = OFFSETS[direction]
-        _steps =  self.grid_height  if direction == UP or direction == DOWN else self.grid_width 
-
+        _steps =  self._grid_height  if direction == UP or direction == DOWN else self._grid_width 
+        _changed_tiles = []
         for _dummy_x in _this_direction:
             _temp_list = self.get_grid_values(_dummy_x,_offset, _steps) # Gets the grid values
             _temp_list = merge(_temp_list) # Merges the column/row
-            self.set_grid_values(_dummy_x,_offset, _steps, _temp_list) # Sets the values to the merged list 
+            _changed_tiles.append(self.set_grid_values(_dummy_x,_offset, _steps, _temp_list)) # Sets the values to the merged list 
+       
+        if(len(_changed_tiles) > 0): # The grid has moved
+            self.new_tile()
 
-    
     def print_grid_snapshot(self):
-         print "SNAPSHOT:"
-         for row in range(self.grid_height):
-            print self.grid[row]
+        """
+        Prints a snapshot of the current 
+        grid state
+        """
+        print "SNAPSHOT:"
+        for row in range(self._grid_height):
+            print self._grid[row]
 
     def get_empty_cells(self):
+        """ 
+        Iterates over the grid and
+        returns all the empty cells
+        (whose value eq 0)
+        """
         _cells = []
-        for _row in range(self.grid_height):
-            for _col in range(self.grid_width):
-                if(self.grid[_row][_col] == 0):
+        for _row in range(self._grid_height):
+            for _col in range(self._grid_width):
+                if(self._grid[_row][_col] == 0):
                     _cells.append([_row,_col])
                    
         return _cells
 
     def get_random_empty_cell(self):
+        """
+        Gets a random empty cell
+        returns False if non available
+        """
         _cells = self.get_empty_cells()
         if(self.get_empty_cells()):
             return random.choice(_cells)
@@ -213,13 +231,13 @@ class TwentyFortyEight:
         """
         Set the tile at position row, col to have the given value.
         """
-        self.grid[row][col] = value
+        self._grid[row][col] = value
 
     def get_tile(self, row, col):
         """
         Return the value of the tile at position row, col.
         """
-        return self.grid[row][col]
+        return self._grid[row][col]
     
 
 #twenty48 = TwentyFortyEight(4,6)

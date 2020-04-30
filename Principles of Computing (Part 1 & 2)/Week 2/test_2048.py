@@ -54,7 +54,8 @@ def run_suite(twentyfortyeight):
     twenty48.print_grid_snapshot()
     suite.run_test(str(twenty48.move(LEFT)), "Something", "Test #5: Move Left") 
     twenty48.print_grid_snapshot()
-
+    suite.run_test(str(twenty48.move(RIGHT)), "Something", "Test #5: Move RIGHT") 
+    twenty48.print_grid_snapshot()
 
     suite.run_test(str(twenty48.reset()), str(twenty48), "Test #4: reset") 
 
