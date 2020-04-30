@@ -80,11 +80,3 @@ my_account.withdraw(15)
 my_account.deposit(10)
 my_account.withdraw(5)
 print my_account.get_balance(), my_account.get_fees()
-
-def clock_helper(total_seconds):
-    """
-    Helper function for a clock
-    """
-    seconds_in_minute = total_seconds % 60
-
-hello = {0: "hey", "": 2, False: 300}
