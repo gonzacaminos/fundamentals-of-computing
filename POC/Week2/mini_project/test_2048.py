@@ -1,5 +1,5 @@
 """
-Template testing suite for Solitaire Mancala
+Template testing suite for 2048
 """
 
 import poc_simpletest
