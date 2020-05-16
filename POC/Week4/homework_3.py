@@ -3,18 +3,10 @@ Homework 3
 """
 
 import math
+from itertools import permutations 
 
-def permutList(_list):
-    if not _list:
-            return [[]]
-    res = []
-    _list = list
-    for e in _list:
-            temp = _list[:]
-            temp.remove(e)
-            res.extend([[e] + r for r in permutList(temp)])
 
-    return res
+
 
 def gen_all_sequences(outcomes, length):
     """
@@ -28,12 +20,37 @@ def gen_all_sequences(outcomes, length):
         for seq in ans:
             for item in outcomes:
                 new_seq = list(seq)
-                print new_seq
                 new_seq.append(item)
                 temp.add(tuple(new_seq))
         ans = temp
     return ans
 
+def gen_permutations(outcomes, length):
+    """
+    Iterative function that permutates the set of all sequences of
+    outcomes of given length
+    """
+
+    perm = set([()])
+    for dummy_idx in range(length):
+        temp = set()
+        for seq in perm:
+            for item in outcomes:
+                new_seq = list(seq)
+                if item not in new_seq:
+                    new_seq.append(item)
+                    temp.add(tuple(new_seq))
+        perm = temp
+    return perm
+
+
+def gen_combinations(outcomes, length):
+    """
+    Function that creates all sorted sequences via gen_permutations
+    """
+    all_sequences = gen_permutations(outcomes, length)
+    sorted_sequences = [tuple(sorted(sequence)) for sequence in all_sequences]
+    return set(sorted_sequences)
 
 def gen_sorted_sequences(outcomes, length):
     """
@@ -50,12 +67,12 @@ def compute_expected_value_2():
     four possibilities
     """
     outcomes = set([1, 2, 3, 4])
-    seqs = list(gen_all_sequences(outcomes, 2))
-
+    seqs = gen_all_sequences(outcomes, 2)
     expected_value = 0
 
     for _idx, _seq in enumerate(seqs):
-        expected_value += _seq[0] * _seq[1]
+        print _seq
+        expected_value = _seq[0] * _seq[1]
 
     # We divide the total on the number of sequences we have
     return expected_value
@@ -78,7 +95,7 @@ def count_consecutives(r_list):
     return True
 
 
-def compute_probability_3(_num_choices, _list_len, percent=False):
+def compute_probability_3(_num_choices, _list_len, permute = False, percent=False):
     """
     Function to compute probability of generating consecutive numbers
     {1 .. 10}
@@ -87,11 +104,11 @@ def compute_probability_3(_num_choices, _list_len, percent=False):
         return "Impossible to return a consecutive list, num of choices < list length"
     outcomes = set([_x for _x in range(0, _num_choices)])
     #seqs = list(gen_all_sequences(outcomes, _list_len))
-    seqs = list(gen_all_sequences(outcomes, _list_len))
-    #perms = permutList(outcomes)
-    
-    print seqs[0], seqs[1]
-    #print len(seqs), math.factorial(_num_choices) / math.factorial(_num_choices - _list_len)
+    if(permute):
+        seqs = list(gen_permutations(outcomes, _list_len))
+    else:
+        seqs = list(gen_all_sequences(outcomes, _list_len))
+    #print seqs
     consecutives = 0
 
     for _idx, _seq in enumerate(seqs):
@@ -121,12 +138,18 @@ def richie_theorem(_num_choices, _list_len):
     return abs(_num_choices - _list_len + 1) * 2
 
 
-length = 5
-numbers = 10
+
+# Set {5,4,3}
+# Subsets = {5}
+# 
 
 # prob = math.factorial(5 + 10) /
 #print "Exercise 2, expected value:", compute_expected_value_2()
-#test_list_2 = [0, 1, 2, 3, 4]
-#print "Exercise 3, number of probabilities:", compute_probability_3()
-print "Exercise 3, percent of probabilities:", compute_probability_3(10,5,True)
+test_list_2 = [0, 1, 2, 3, 4]
+print "Exercise 3, number of probabilities. Counting:", compute_probability_3(10,5,False, True)
+print "Exercise 4, percent of probabilities. Permutation:", compute_probability_3(10,5,True, True)
+print "Permutation:", gen_permutations(test_list_2,2)
+print "Combination:", gen_combinations(test_list_2,2)
+
 #print "Exercise 3, Richie Theorem:", richie_theorem(10, test_list_2)
+
