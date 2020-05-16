@@ -61,21 +61,44 @@ def gen_sorted_sequences(outcomes, length):
     return set(sorted_sequences)
 
 
+def compute_expected_value():
+    """
+    Function to compute expected value of simple dice game.
+    Gets all the possible sequences on the dice outcomes
+    and calculates what will be the result if playing all
+    the possibilities.
+    """
+    outcomes = set([1, 2, 3, 4])
+    seqs = list(gen_all_sequences(outcomes, 2))
+    expected_value = 0
+    print seqs
+    for i, _seq in enumerate(seqs):
+        expected_value += _seq[0] * _seq[1]
+            
+    # We divide the total on the number of sequences we have
+    return expected_value/float(len(seqs))
+
+
+
 def compute_expected_value_2():
     """
     Function to compute expected value of simple dice game with 
     four possibilities
     """
+
+
     outcomes = set([1, 2, 3, 4])
     seqs = gen_all_sequences(outcomes, 2)
     expected_value = 0
 
     for _idx, _seq in enumerate(seqs):
-        print _seq
-        expected_value = _seq[0] * _seq[1]
+        #print _seq
+        expected_value *= _seq[0] * _seq[1]
 
     # We divide the total on the number of sequences we have
-    return expected_value
+    return float(expected_value)
+
+print float(1/16 * 2 * 2/16 * 3 * 3/16 * 4 * 4/16 * 5 * 3/16 * 6 * 2/16 * 7 * 1/16 * 8)
 
 
 def count_consecutives(r_list):
@@ -143,13 +166,14 @@ def richie_theorem(_num_choices, _list_len):
 # Subsets = {5}
 # 
 
-# prob = math.factorial(5 + 10) /
+## prob = math.factorial(5 + 10) /
 #print "Exercise 2, expected value:", compute_expected_value_2()
-test_list_2 = [0, 1, 2, 3, 4]
-print "Exercise 3, number of probabilities. Counting:", compute_probability_3(10,5,False, True)
-print "Exercise 4, percent of probabilities. Permutation:", compute_probability_3(10,5,True, True)
-print "Permutation:", gen_permutations(test_list_2,2)
-print "Combination:", gen_combinations(test_list_2,2)
+#test_list_2 = [0, 1, 2, 3, 4]
+#print "Exercise 3, number of probabilities. Counting:", compute_probability_3(10,5,False, True)
+#print "Exercise 4, percent of probabilities. Permutation:", compute_probability_3(10,5,True, True)
+#print "Permutation:", gen_permutations(test_list_2,2)
+#print "Combination:", gen_combinations(test_list_2,2)
 
 #print "Exercise 3, Richie Theorem:", richie_theorem(10, test_list_2)
 
+print "Exercise 2, expected value:", compute_expected_value()
