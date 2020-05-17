@@ -30,6 +30,9 @@ def run_suite():
     suite.run_test(str( yahtzee.expected_value((1,1), 6, 3)), "3", "Test #8: Test Expected value.")
     suite.run_test(str( yahtzee.expected_value((1,2), 6, 3)), "3", "Test #8: Test Expected value.")
     print
+    suite.run_test(str( yahtzee.strategy((1,1,1,2,3), 6)), "3", "Test #10: Test Strategy.")
+    suite.run_test(str( yahtzee.strategy((5,6,5,4,1), 6)), "3", "Test #10: Test Strategy.")
+
     #suite.run_test(str( yahtzee.gen_all_holds( (1,2) ) ), "3", "Test #9: Test Gen holds.")
     #suite.run_test(str( len(yahtzee.gen_all_holds( (1,6,4) )) ), str( pow(2,len((1,6,4) ) )), "Test #9: Test Gen holds.")
 
@@ -37,6 +40,6 @@ def run_suite():
 
     suite.report_results()
 
-#run_suite()
+run_suite()
 
-test_holds.run_suite(yahtzee.gen_all_holds)
+#test_holds.run_suite(yahtzee.gen_all_holds)
