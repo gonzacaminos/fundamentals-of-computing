@@ -66,3 +66,5 @@ def run_suite(twentyfortyeight):
 
     # report number of tests and failures
     suite.report_results()
+
+TEST_CASES = [[2], [2, 0]]
