@@ -11,8 +11,8 @@ Cookie Clicker Simulator
 import build_info as provided
 import math
 # Constants
-#SIM_TIME = 10000000000.0
-SIM_TIME = 100.0
+SIM_TIME = 10000000000.0
+#SIM_TIME = 100.0
 
 class ClickerState:
     """
@@ -67,7 +67,7 @@ class ClickerState:
         """
         Add to the current CPS
         """
-        self.cps = float(self.get_cps() + cps)
+        self.cps += cps
 
 
     def get_cps(self):
@@ -93,7 +93,7 @@ class ClickerState:
         return float(self.time)
     
     def add_history(self, item, cost_item):
-        self.history.append((self.get_cookies(), item, cost_item, self.get_total_cookies()))
+        self.history.append((self.get_time(), item, cost_item, self.get_total_cookies()))
 
         return
 
@@ -118,7 +118,9 @@ class ClickerState:
 
         Should return a float with no fractional part
         """
-        return math.floor(cookies/self.get_cps())
+        remaining = cookies - self.get_cookies()
+        
+        return float(int(math.ceil(remaining/self.get_cps())))
     
     def wait(self, time):
         """
@@ -126,7 +128,7 @@ class ClickerState:
 
         Should do nothing if time <= 0.0
         """
-        if(time > 0.0):
+        if(time > 0):
 
             self.add_time(time)
             cookies = self.get_cps() * time
@@ -146,6 +148,7 @@ class ClickerState:
             self.add_cps(additional_cps)
             self.add_history(item_name, cost)
 
+
         return
    
     
@@ -162,7 +165,6 @@ def simulate_clicker(build_info, duration, strategy):
 
     while time <= duration:
         time = clicker.get_time()
-
         to_buy = strategy(clicker.get_cookies(), clicker.get_cps(), clicker.get_history(), duration -time , build_info)
         
         if(to_buy == None):
@@ -170,11 +172,8 @@ def simulate_clicker(build_info, duration, strategy):
 
         cost = build_info.get_cost(to_buy)
         time_until = clicker.time_until(cost)
-
         if(time+time_until > duration):
-            #print str(clicker)
-            #print cost, time_until
-            pass 
+            break  
 
         clicker.wait(time_until)
         clicker.buy_item(to_buy, cost, build_info.get_cps(to_buy))
@@ -187,7 +186,7 @@ def simulate_clicker(build_info, duration, strategy):
         # if there's time left let 'em bake the last ones
         clicker.wait(time_left)
 
-    print clicker.get_history()
+    #print clicker.get_history()
 
     return clicker
 
